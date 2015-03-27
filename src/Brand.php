@@ -36,20 +36,6 @@
            $this->setId($result['id']);
        }
 
-    //    function getStudents()
-    //    {
-    //        $returned_results = $GLOBALS['DB']->query("SELECT students.* FROM courses JOIN students_courses ON (courses.id = students_courses.course_id) JOIN students ON (students_courses.student_id = students.id) WHERE courses.id = {$this->getId()};");
-    //        $students = [];
-    //        foreach($returned_results as $result) {
-    //            $name = $result['name'];
-    //            $enroll_date = $result['enroll_date'];
-    //            $id = $result['id'];
-    //            $new_student = new Student($name, $enroll_date, $id);
-    //            array_push($students, $new_student);
-    //        }
-    //        return $students;
-    //    }
-
         function getStore()
         {
             $returned_results = $GLOBALS['DB']->query("SELECT stores.* FROM brands JOIN brands_stores ON (brands.id = brands_shoes.brand_id) JOIN stores ON (brands_shoes.store_id = stores.id) WHERE brands.id = {this->getID()};");
