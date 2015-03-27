@@ -4,14 +4,8 @@
         <title>{{ store.getStoreName }}</title>
     </head>
     <body>
-        <h1>{{ store.getStoreName }}</h1>
         {% if brands is not empty %}
-            {% for brand in brands %}
-            <li>{{ brand.getBrandName }}</li>
-            {% endfor %}
-        {% else %}
-            This store doesn't sell any brands yet! Add a few!
-        {% endif %}    
+        {% endif %}
 
     <form action="/store/{{ store.getId }}" method="post">
         <input name"_method" type="hidden" value="patch">
@@ -19,9 +13,11 @@
         <input id="store_name" name="store_name" type="text">
         <button type="submit" class='btn'>Update</button>
 <p>
+</form>
     <form action="/store/{{ store.getId }}" method="post">
         <input name="_method" type="hidden" value="delete">
         <button type="submit" class='btn btn-danger'>Delete this Store</button>
+    </form>
 </p>
     </body>
 </html>

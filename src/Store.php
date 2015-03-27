@@ -63,6 +63,21 @@
             return $brands;
        }
 
+       function delete()
+       {
+           $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+           $GLOBALS['DB']->exec("DELETE FROM brands_stores WHERE store_id = {$this->getId()};");
+       }
+
+       function update($new_store)
+        {
+            $GLOBALS['DB']->exec("UPDATE books SET title = '{$new_store}' WHERE id = {$this->getId()};");
+            $this->setStoreName($new_store);
+        }
+
+
+
+
        static function getAll()
        {
            $store_results = $GLOBALS['DB']->query('SELECT * FROM stores;');
@@ -84,6 +99,7 @@
             $found_store = new Store($result['store_name'], $result['id']);
             return $found_store;
         }
+
 
 
 
