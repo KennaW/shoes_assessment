@@ -30,7 +30,7 @@
      });
 
 //store page
-    $app->post('/store/{id}', function() use ($app) {
+    $app->post('/add_brand', function() use ($app) {
          $new_brand = new Brand($_POST['brand_name']);
          $new_brand->save();
          $store = Store::find($_POST['id']);

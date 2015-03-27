@@ -7,7 +7,18 @@
 
         <h1>{{ store.getStoreName }}</h1>
         {% if brands is not empty %}
+            {% for brand in brands %}
+            <li>{{ brand.getBrandName }}</li>
+            {% endfor %}
         {% endif %}
+
+        <h4>Add a new brand for this store:</h4>
+
+<form action='/add_brand' method='post'>
+    <input id="id" name="id" type="hidden" value="{{ store.getId }}">
+    <input type="text" name="brand_name" id="brand_name">
+    <button type='submit'>Add shoe brand</button>
+</form>
 
     <form action="/store/{{ store.getId }}" method="patch">
         <input name"_method" type="hidden" value="patch">
