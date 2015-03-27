@@ -45,8 +45,8 @@
 
        function getBrand()
        {
-           $returned_results = $GLOBALS['DB']->query("SELECT brands.*
-               FROM stores
+           $returned_results = $GLOBALS['DB']->query("SELECT stores.*
+               FROM brands
                    JOIN brands_stores
                     ON (brands.id = brands_stores.brand_id)
                    JOIN stores
