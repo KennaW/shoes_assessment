@@ -34,7 +34,7 @@
          $new_brand = new Brand($_POST['brand_name']);
          $new_brand->save();
          $store = Store::find($_POST['id']);
-         $brand->addBrand($new_brand);
+         $store->addBrand($new_brand);
 
          return $app['twig']->render('store.html.twig', array('stores'=>$store, 'brands'=>$store->getBrand()));
      });
