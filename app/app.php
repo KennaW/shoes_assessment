@@ -33,10 +33,11 @@
     $app->post('/add_brand', function() use ($app) {
          $new_brand = new Brand($_POST['brand_name']);
          $new_brand->save();
+
          $store = Store::find($_POST['id']);
          $store->addBrand($new_brand);
 
-         return $app['twig']->render('store.html.twig', array('stores'=>$store, 'brands'=>$store->getBrand()));
+         return $app['twig']->render('store.html.twig', array('stores'=>Store::getAll(), 'brands'=>Brand::getAll()));
      });
 
       $app->get("/store/{id}", function($id) use ($app){
@@ -49,6 +50,7 @@
         $store_name = $_POST['store_name'];
         $store = Store::find($id);
         $store->update($store_name);
+
         return $app['twig']->render('store.html.twig', array('store' => $store,'brands' => $store->getBrands()));
     });
 
