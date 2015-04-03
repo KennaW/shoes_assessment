@@ -7,10 +7,10 @@
     <p>
       <h1>{{ brand.getBrandName }}</h1>
       <h2>Stores that carry this brand</h2>
-      {% if stores is not empty %}
-        {% for store in stores %}
-        <li>{{ store.getStoreName }}</li>
-        {% endfor %}
+        {% if stores is not empty %}
+          {% for store in stores %}
+            <li>{{ store.getStoreName }}</li>
+          {% endfor %}
         {% endif %}
     </p>
 

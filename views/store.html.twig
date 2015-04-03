@@ -8,7 +8,7 @@
         <h1>{{ store.getStoreName }}</h1>
         {% if brands is not empty %}
             {% for brand in brands %}
-            <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
+              <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
             {% endfor %}
         {% endif %}
 
