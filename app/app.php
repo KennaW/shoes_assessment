@@ -37,7 +37,7 @@
          $store = Store::find($_POST['id']);
          $store->addBrand($new_brand);
 
-         return $app['twig']->render('store.html.twig', array('stores' => $store, 'brands'=>$store->getBrand()));
+         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands'=>$store->getBrand()));
      });
 
       $app->get("/store/{id}", function($id) use ($app){
