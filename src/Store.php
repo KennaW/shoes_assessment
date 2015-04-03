@@ -48,10 +48,11 @@
            $returned_results = $GLOBALS['DB']->query("SELECT stores.*
                FROM stores
                    JOIN brands_stores
-                    ON (stores.id = brands_stores.stores_id)
+                    ON (stores.id = brands_stores.store_id)
                    JOIN brands
                     ON (brands_stores.brand_id = stores.id)
                     WHERE stores.id = {$this->getId()};");
+          //  var_dump($returned_results);
 
             $brands = [];
             foreach ($returned_results as $result) {
@@ -71,7 +72,7 @@
 
        function update($new_store)
         {
-            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_store}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET store_name = '{$new_store}' WHERE id = {$this->getId()};");
             $this->setStoreName($new_store);
         }
 
