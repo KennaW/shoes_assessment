@@ -69,9 +69,13 @@
 
 //brand page
 
-      $app->get('/brands', function() use ($app) {
-        $brands = Brand::getAll();
-        return $app['twig']->render('brands.html.twig', array('brands' => $brands));
+      $app->get('/brands/{id}', function($id) use ($app) {
+        $brand = Brand::find($id);
+        //'brands'=>$store->getBrand()
+        //$stores = Brand::getStore();
+        $all_stores = Store::getAll();
+
+        return $app['twig']->render('brand.html.twig', array('stores' => $brand->getStore(), 'brand' => $brand, 'all_stores' => $all_stores));
     });
 
 

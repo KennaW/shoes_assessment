@@ -8,7 +8,7 @@
         <h1>{{ store.getStoreName }}</h1>
         {% if brands is not empty %}
             {% for brand in brands %}
-            <li>{{ brand.getBrandName }}</li>
+            <li><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></li>
             {% endfor %}
         {% endif %}
 
@@ -21,7 +21,7 @@
   </form>
 
   <p><a href="/store/{{ store.getId }}/edit">Edit store name</a></p>
-  
+
   <p><a href='/'>Home</a></p>
 
   <!-- <form action="/store/{{ store.getId }}" method="patch">
