@@ -38,21 +38,40 @@
 
         function getStore()
         {
-            $returned_results = $GLOBALS['DB']->query("SELECT stores.*
-              FROM brands
-              JOIN brands_stores
-              ON (brands.id = brands_shoes.brand_id)
-              JOIN stores ON (brands_shoes.store_id = stores.id)
-              WHERE brands.id = {this->getID()};");
-              
-            $stores = [];
-            foreach($returned_results as $result) {
-                $store_name = $result['store_name'];
-                $id = $result['id'];
-                $new_store = new Store($store_name, $id);
-                array_push($stores, $new_store);
-            }
-            return $stores;
+          $getStore = $GLOBALS['DB']->query("SELECT store_id FROM brands_stores WHERE brand_id = {$this->getId()};");
+          $store_ids = $getStore->fetchAll(PDO::FETCH_ASSOC);
+
+
+           $stores = [];
+           foreach ($store_ids as $id) {
+               $store_id = $id['store_id'];
+               $result = $GLOBALS['DB']->query("SELECT * FROM stores WHERE id = {$store_id};");
+               $returned_store = $result->fetchAll(PDO::FETCH_ASSOC);
+
+               $name = $returned_store[0]['store_name'];
+               $id = $returned_store[0]['id'];
+               $new_store = new Store($name, $id);
+               array_push($stores, $new_store);
+           }
+           return $stores;
+
+
+
+            // $returned_results = $GLOBALS['DB']->query("SELECT stores.*
+            //   FROM brands
+            //   JOIN brands_stores
+            //   ON (brands.id = brands_shoes.brand_id)
+            //   JOIN stores ON (brands_shoes.store_id = stores.id)
+            //   WHERE brands.id = {this->getID()};");
+            //
+            // $stores = [];
+            // foreach($returned_results as $result) {
+            //     $store_name = $result['store_name'];
+            //     $id = $result['id'];
+            //     $new_store = new Store($store_name, $id);
+            //     array_push($stores, $new_store);
+            // }
+            // return $stores;
         }
 
 

@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Shoe Brand</title>
+    </head>
+    <body>
+      {% if stores is not empty %}
+        {% for store in stores %}
+        <li>{{ store.getName }}</li>
+        {% endfor %}
+    </body>
+
+
+    <p><a href='/'>Home</a></p>
+</html>
